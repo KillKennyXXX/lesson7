@@ -1,6 +1,32 @@
 public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Cat cat = new Cat("Ричард");
+        Cat cat2 = new Cat("Борис");
+        Cat cat3 = new Cat("Барсик");
+        Plate plate = new Plate(50);
 
-    public static void main(String[] args) {
-	// write your code here
+        plate.printInfo();
+
+        while (!cat.isWellfed() && !cat2.isWellfed() && !cat3.isWellfed()) {
+            if (!cat.isWellfed()) cat.eat(plate);
+            if (!cat2.isWellfed()) cat2.eat(plate);
+            if (!cat3.isWellfed()) cat3.eat(plate);
+
+            plate.printInfo();
+            plate.increase((int) (Math.random() * 20));
+            Thread.sleep(1000);
+        }
     }
 }
+/*7 Задание
+1. Расширить задачу про котов и тарелки с едой
+
+2. Добавить проверку, чтобы из тарелки нельзя было взять больше еды, чем в ней есть на текущий момент
+
+3. Каждому коту добавить boolean поле сытность (по-умолчанию все коты голодные, т.е. сытность=false)
+
+4. Считаем, что если коту недостаточно еды в тарелке, то он не ест из этой тарелки. Если коту достаточно еды, то он ее ест и становится сытым
+
+5. Продемонстрировать логику программы. Создать массив котов и тарелку с каким-то количеством еды. Всех котов направляем есть из этой тарелки. После прохода массива продемонстрировать, какие коты стали сытые, а какие остались голодные. Значения можно придумать самому
+
+6. Добавить в класс тарелки метод, позволяющий увеличивать количество еды*/
